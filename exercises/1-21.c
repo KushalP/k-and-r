@@ -9,11 +9,17 @@ int get_line(char s[], int n);
 
 int main()
 {
+	int i, j; // Count string index and tabs
 	char string[LINE_LIMIT];
 
 	while (get_line(string, LINE_LIMIT) > 0) // Check we've got line input && not EOF
 	{
-		printf("%s\n", string);
+		for (i = 1, j = 1; string[i] != '\0'; ++i, ++j)
+		{
+			i -= entab(string, j, i);
+		}
+
+		printf("%s", string);
 	}
 
 	return 0;
@@ -21,7 +27,33 @@ int main()
 
 int entab(char s[], int tabs, int offset)
 {
-	return 1;
+	int i, spaces;
+
+	if (((tabs % TAB) == 0) // We have the exact number to fulfil our tab limit
+		&& (s[offset - 1] == '_')) // Our input is an underscore
+	{
+		// Count down; while we have underscores and an array with enough '_' chars for a tab
+		for (i = offset - 1; (s[i] == '_') && (offset - TAB); --i)
+		{
+			// Increment up our spaces counter, depending on how much '_' chars we have left
+			spaces = i > (offset - TAB) ? offset - i - 1 : offset - i;
+		}
+
+		// Change our '_' chars for tabs
+		if (spaces > 0) s[offset - spaces] = '\t';
+
+		// Shift our string across by the number of spaces remaining
+		for (i = offset - spaces + 1; s[i] != '\0'; ++i)
+		{
+			s[i] = s[i + spaces - 1];
+		}
+
+		s[++i] = '\0'; // Close off our string!
+
+		return spaces - 1; // C strings == char array (hence the minus 1)
+	}
+
+	return 0;
 }
 
 int get_line(char s[], int n)
