@@ -18,6 +18,11 @@ int main()
 		{
 			comment_type = 1;
 		}
+		else if (comment_type == 0 && ((c == '/' && next_c == '*')
+			|| (c == '*' && next_c == '/')))
+		{
+			comment_type = 2;
+		}
 
 		switch (comment_type)
 		{
@@ -25,6 +30,11 @@ int main()
 				if (c == '\n')
 					putchar('\n');
 					comment_type = 0;
+					next_c = getchar();
+				break;
+			case 2:
+				comment_type = 0;
+				next_c = getchar();
 				break;
 			default:
 				putchar(c);
