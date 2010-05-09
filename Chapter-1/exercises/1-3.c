@@ -3,7 +3,7 @@
 /* print Fahrenheit-Celsius table
 	for fahr = 0, 20, ..., 300 */
 
-main()
+int main()
 {
 	float fahr, celsius;
 	float lower, upper, step;
@@ -23,4 +23,6 @@ main()
 		printf("%3.0f\t%6.1f\n", fahr, celsius);
 		fahr = fahr + step;
 	}
+
+	return 0;
 }

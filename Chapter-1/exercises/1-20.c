@@ -2,7 +2,7 @@
 
 int detab(int spaces, int n);
 
-main()
+int main()
 {
 	int c, i = 0, spaces = 8;
 

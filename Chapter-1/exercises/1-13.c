@@ -5,7 +5,7 @@
 #define OUT	0	/* outside a word */
  
 /* horizontal histogram of word lengths */
-main()
+int main()
 {
 	int state = OUT;
 	int cw = 0;
@@ -32,4 +32,6 @@ main()
 		for (x = 0; x < nwords[i]; ++x) printf("|");
 		printf("\n");
 	}
+
+	return 0;
 }

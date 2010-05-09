@@ -5,7 +5,7 @@
 
 float to_celsius(int fahr);
 
-main()
+int main()
 {
 	int i = 0;
 	

@@ -1,6 +1,6 @@
 #include <stdio.h>
  
-main()
+int main()
 {
 	int c, previous;
  
@@ -15,4 +15,6 @@ main()
 	}
 	
 	printf("Prev: %d\n", previous);
+
+	return 0;
 }
