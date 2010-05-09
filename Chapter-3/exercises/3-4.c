@@ -20,15 +20,16 @@ int main()
 void itoa(int n, char s[])
 {
 	int i, sign;
-
-	// Record sign
-	if ((sign = n) < 0) n = -n; // Make n positive
-
+	sign = n;
+	
 	i = 0;
-	do {
-		// Generate digits in reverse order
-		s[i++] = n % 10 + '0'; // Get next digit
-	} while ((n /= 10) > 0); // Delete it
+	do { // Generate digits in reverse order
+
+		// This call to abs() is what makes this fixed
+		// version of itoa work with the largest negative
+		// number.
+		s[i++] = abs(n % 10) + '0';
+	} while ((n /= 10) > 0);
 
 	if (sign < 0) s[i++] = '-';
 
