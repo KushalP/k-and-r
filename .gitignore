@@ -1,2 +1,6 @@
+# OS X noise
 .DS_Store
+profile
+
+# Build noise
 *.out
