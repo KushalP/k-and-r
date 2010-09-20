@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-#define swap(t, x, y) t z = x; x = y; y = z;
+#define swap(t, x, y) t z = x;\
+					x = y;\
+					y = z;
 
 int main()
 {
